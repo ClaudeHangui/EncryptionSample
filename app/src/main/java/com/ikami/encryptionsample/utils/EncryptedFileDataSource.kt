@@ -99,17 +99,16 @@ class EncryptedFileDataSource(
     }
 
     override fun close() {
-        mUri = null
         try {
             mInputStream?.close()
-        } catch (e: IOException) {
-            throw EncryptedFileDataSourceException(e)
-        } finally {
-            mInputStream = null
             if (mOpened) {
                 mOpened = false
-                transferListener.onTransferEnd(this, DataSpec(mUri!!), false)
+                mUri?.let { DataSpec(it) }?.let { transferListener.onTransferEnd(this, it, false) }
+                mUri = null
+                mInputStream = null
             }
+        } catch (e: IOException) {
+            throw EncryptedFileDataSourceException(e)
         }
     }
 

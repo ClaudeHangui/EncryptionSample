@@ -31,12 +31,13 @@ class EncryptionUtil {
             val secretKey = keyGenerator.generateKey()
 
             val secretKeySpec = SecretKeySpec(encryptionKey.toByteArray(), "AES")
-            val cipher = Cipher.getInstance("AES")
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec)
+
+             val cipher = Cipher.getInstance("AES")
+             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec)
              val inputBytes = ByteArray(base64Video.available())
              Log.e(this::class.java.simpleName, "inputBytes size: ${inputBytes.size}")
              //base64Video.read(inputBytes)
-            // val cipherText = cipher.doFinal(inputBytes)
+             //val cipherText = cipher.doFinal(inputBytes)
              saveEncryptedVideo(context, cipher, base64Video)
 
              //encryptedVideoString = Base64.encodeToString(cipherText, Base64.DEFAULT)
