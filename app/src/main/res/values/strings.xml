@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EncryptionSample</string>
+
+    <string name="success_video_encryption">Video encrypted successfully</string>
+    <string name="success_video_decryption">Video decrypted successfully</string>
+    <string name="error_unable_to_decrypt">Unable to decrypt file</string>
+    <string name="error_unable_to_save_file">Unable to encrypt and save file</string>
 </resources>
